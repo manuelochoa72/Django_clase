@@ -1,0 +1,32 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
+<form action="{% url 'polls:votar' pregunta.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+
+        <legend> <hi> {{ pregunta.texto_pregunta }}</hi></legend>
+        {% if mensaje_error %}
+            <p><strong>{{  mensaje_error  }}</strong></p>
+        {% endif %}
+        {%for eleccion in pregunta.eleccion_set.all %}
+            <input type="radio" name="elegir" id="eleccion{{ forloop.counter }}" value="{{ eleccion.id  }}">
+            <label for="eleccion{{ foorloop.counter }}"> {{ eleccion.texto_eleccion }} </label>
+        {% endfor %}
+    </fieldset>
+    <input type="submit" valor="Votar">
+</form>
+
+<!--
+<h1>{{ pregunta.texto.pregunta }}</h1>
+    <ul>
+        <!-- select from
+            pregunta join eleccion on pregunta.id 
+            where pregunta.id =1
+        -- >
+        {% for eleccion in pregunta.eleccion_set.all %}
+            <li>{{ eleccion.texto_eleccion }}</li>
+        {% endfor %}
+    </ul>
+    --> 

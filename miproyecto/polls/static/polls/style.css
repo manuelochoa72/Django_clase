@@ -1,0 +1,13 @@
+body {
+    background: black url("images/back.jpeg") no-repeat center center fixed; 
+    -webkit-backdrop-size:cover;
+    -moz-background-size:cover;
+    -moz-background-size:cover;
+    background-size: cover;
+
+
+}
+li a {
+    color: green;
+
+}

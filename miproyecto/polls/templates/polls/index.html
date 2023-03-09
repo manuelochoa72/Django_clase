@@ -1,0 +1,12 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+{% if ultimas_preguntas %}
+    <ul>
+    {% for pregunta in ultimas_preguntas %}
+        <li><a href="{% url 'polls:detalle' pregunta.id %}">{{ pregunta.texto_pregunta }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay preguntas aún</p>
+{% endif %}
